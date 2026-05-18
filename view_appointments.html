@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Appointments</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+<div class="container">
+    <h2>All Appointments</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="a : ${appointments}">
+            <td th:text="${a.appointmentid}"></td>
+            <td th:text="${a.clientname}"></td>
+            <td th:text="${a.service}"></td>
+            <td th:text="${a.date}"></td>
+            <td th:text="${a.time}"></td>
+            <td>
+                <a th:href="@{'/delete/' + ${a.appointmentid}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+    <a href="/">Back</a>
+</div>
+</body>
+</html>
